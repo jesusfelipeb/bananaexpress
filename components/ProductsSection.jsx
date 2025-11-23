@@ -6,22 +6,22 @@ import { FaWhatsapp } from "react-icons/fa";
 // Definimos los datos de las Boxes de Banana Express
 const productBoxes = [
   {
-    title: "Box Semanal Esencial",
+    title: "Box Individual Esencial",
     description: "La selección ideal para cubrir las necesidades básicas de 1 o 2 personas durante la semana. Frescura y variedad garantizada.",
-    price: "$7.500 ARS",
-    content: "Papas, Cebollas, Zanahorias, Tomates, 1 kg de Manzanas, Naranjas.",
+    price: "$11.156 ARS",
+    content: "1 Lechuga, 1/4kg de Zanahoria, 1 Palta, 1/2kg de Papa Cepillada, 1/2 Docena de Huevos, 1/2kg de Bananas, 1/4kg de Mandarinas, 1/4kg de Tomate, 1/4kg de Cebolla, 1 Unidad de Morron rojo.",
   },
   {
-    title: "Box Familiar Completa",
-    description: "Una caja generosa diseñada para familias. Incluye una amplia gama de verduras y frutas de estación.",
-    price: "$12.900 ARS",
-    content: "Incluye la Box Esencial + Palta, Limones, Hojas Verdes, Pimientos, Bananas.",
+    title: "Box Parejas",
+    description: "Una caja generosa diseñada para dos personas. Incluye una amplia gama de verduras y frutas de estación.",
+    price: "$21.363 ARS",
+    content: "1 Lechuga, 1 atado de Rucula, 1/2kg de Zanahoria, 2 Paltas, 1kg de papa cepillada, 1 Docena de Huevos, 1kg de Bananas, 1/2kg de Mandarinas, 1/2kg de Tomate, 1/2kg de Cebolla, 1/2kg de Naranja de jugo, 1 ajo, 1 unidad de Morron Rojo",
   },
   {
-    title: "Box Fit & Smoothie",
+    title: "Box Familiar",
     description: "Especialmente pensada para quienes buscan una alimentación más ligera, jugos y batidos saludables.",
-    price: "$9.200 ARS",
-    content: "Frutas de alto valor nutritivo: Banana, Kiwi, Frutillas, Espinaca, Jengibre, Arándanos.",
+    price: "$35.839 ARS",
+    content: "2 unidades de Lechuga, 1kg de Tomates, 1kg de Papa cepillada, 3 unidades de Paltas, 1 maple de Huevos grandes, 1kg e Banana, 1kg de Mandarina, 1kg de Naranja de jugo, 1kg de Cebolla, 1/2kg de Manzana roja, 1/2 kg de Morron rojo, 1 Ajo, 1 atado de Rucula.",
   },
 ];
 
