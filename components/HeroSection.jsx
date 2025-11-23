@@ -32,15 +32,25 @@ const Feature = ({ Icon, text }) => (
 );
 
 export default function HeroSection() {
-  const whatsappNumber = '5491167891234'; 
+  const whatsappNumber = '5491127017092'; 
   const whatsappMessage = encodeURIComponent('Hola! Quiero hacer un pedido de Banana Express 🍌');
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <section 
       id="inicio" 
-      className="relative bg-gradient-to-br from-green-900 via-green-500 to-emerald-800 text-white min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative text-white min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
+      {/* Imagen de fondo */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url("/4.jpg")',
+        }}
+      ></div>
+      
+      {/* Overlay con gradiente */}
+      <div className="absolute inset-0 bg-green-900 opacity-40"></div>
       {/* Patrón de fondo decorativo */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 text-9xl">🍎</div>
@@ -114,16 +124,16 @@ export default function HeroSection() {
           </div>
 
           {/* Botones CTA MEGA CLAROS */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-5 ">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-5">
             
             {/* Botón primario GIGANTE de WhatsApp */}
             <a 
               href={whatsappLink} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="w-full sm:w-auto group relative inline-flex  items-center justify-center bg-green-500 hover:bg-green-600 text-white text-xl md:text-2xl font-black py-5 md:py-6 px-10 md:px-14 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse-slow border-2 border-white"
+              className="w-full sm:w-auto group relative inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white text-xl md:text-2xl font-black py-5 md:py-6 px-10 md:px-14 rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-105 animate-pulse-slow"
             >
-              <MessageCircle className="mr-3 h-7 w-7 md:h-8 md:w-8 " />
+              <MessageCircle className="mr-3 h-7 w-7 md:h-8 md:w-8" />
               <span>¡PEDIR POR WHATSAPP!</span>
             </a>
             
