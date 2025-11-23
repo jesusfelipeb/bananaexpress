@@ -56,7 +56,7 @@ export default function HeroSection() {
       </div>
       
       {/* Overlay con gradiente */}
-      <div className="absolute inset-0 bg-green-900 opacity-40"></div>
+      <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
 
       {/* Patrón de fondo decorativo */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
