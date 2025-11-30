@@ -10,7 +10,7 @@ export default function Header() {
 
   const navItems = [
     { name: 'Inicio', href: './' },
-    { name: 'Qué Hacemos', href: '#que-hacemos' },
+    // { name: 'Qué Hacemos', href: '#que-hacemos' },
     { name: 'Productos Box', href: '/productos' },
     { name: 'Contacto', href: '#contacto' },
   ];
@@ -39,7 +39,7 @@ export default function Header() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link 
-            href="#inicio" 
+            href="./" 
             className="flex items-center gap-2 group"
           >
             <div className={`text-4xl transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}>
@@ -71,7 +71,7 @@ export default function Header() {
             
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/5491112345678?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
+              href="https://wa.me/5491125017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -116,7 +116,7 @@ export default function Header() {
             
             {/* Mobile WhatsApp Button */}
             <a
-              href="https://wa.me/5491112345678?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
+              href="https://wa.me/5491125017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}

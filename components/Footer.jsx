@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Phone, Mail, Clock, Instagram, MessageCircle, Heart } from 'lucide-react';
 
 export default function Footer() {
-  const whatsappNumber = '5491167891234';
+  const whatsappNumber = '5491125017092';
   const whatsappMessage = encodeURIComponent('Hola! Quiero hacer un pedido de Banana Express 🍌');
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -18,7 +18,7 @@ export default function Footer() {
     {
       icon: Phone,
       title: 'Teléfono',
-      content: '+54 9 11 6789-1234',
+      content: '+54 9 11 2501-7092',
       subtitle: 'Llamanos o escribinos',
       link: `tel:${whatsappNumber}`,
       action: 'Llamar'

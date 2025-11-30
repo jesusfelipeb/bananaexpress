@@ -33,7 +33,7 @@ const Feature = ({ Icon, text }) => (
 );
 
 export default function HeroSection() {
-  const whatsappNumber = '5491127017092'; 
+  const whatsappNumber = '5491125017092'; 
   const whatsappMessage = encodeURIComponent('Hola! Quiero hacer un pedido de Banana Express 🍌');
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -49,7 +49,7 @@ export default function HeroSection() {
           alt="Frutas y verduras frescas"
           fill
           priority
-          quality={85}
+          
           className="object-cover object-center"
           sizes="100vw"
         />
