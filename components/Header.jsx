@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Phone } from 'lucide-react';
 
 export default function Header() {
@@ -10,7 +11,6 @@ export default function Header() {
 
   const navItems = [
     { name: 'Inicio', href: './' },
-    // { name: 'Qué Hacemos', href: '#que-hacemos' },
     { name: 'Productos Box', href: '/productos' },
     { name: 'Contacto', href: '#contacto' },
   ];
@@ -32,24 +32,26 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-gradient-to-r from-green-500 to-green-600'
+          : 'bg-green-600/70 backdrop-blur-sm'
       }`}
     >
       <nav className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo PNG */}
           <Link 
             href="./" 
-            className="flex items-center gap-2 group"
+            className="flex items-center group"
           >
-            <div className={`text-4xl transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12`}>
-              🍌
+            <div className="relative w-32 h-10 sm:w-40 sm:h-12 md:w-64 md:h-16 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/logo.png"
+                alt="Banana Express Logo"
+                fill
+                priority
+                className={`object-contain shadow-md rounded-full bg-amber-50/90 py-0.5  ${isScrolled ? 'drop-shadow-stone-500' : 'drop-shadow-white'}`}
+                sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, (max-width: 1024px) 224px, 256px"
+              />
             </div>
-            <span className={`text-2xl font-black tracking-tight transition-colors duration-300 ${
-              isScrolled ? 'text-green-600' : 'text-white'
-            }`}>
-              BANANA <span className="text-yellow-400">EXPRESS</span>
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -59,7 +61,7 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 className={`relative font-semibold transition-colors duration-300 group ${
-                  isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-yellow-300'
+                  isScrolled ? 'text-gray-700 hover:text-green-300' : 'text-white hover:text-yellow-300'
                 }`}
               >
                 {item.name}
@@ -71,7 +73,7 @@ export default function Header() {
             
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/5491125017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
+              href="https://wa.me/5491127017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -116,7 +118,7 @@ export default function Header() {
             
             {/* Mobile WhatsApp Button */}
             <a
-              href="https://wa.me/5491125017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
+              href="https://wa.me/5491127017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
