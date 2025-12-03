@@ -48,7 +48,7 @@ export default function Header() {
                 alt="Banana Express Logo"
                 fill
                 priority
-                className={`object-contain shadow-md rounded-full bg-amber-50/90 py-0.5  ${isScrolled ? 'drop-shadow-stone-500' : 'drop-shadow-white'}`}
+                className={`object-contain drop-shadow-sm rounded-full bg-lime-100/90 py-0.5  ${isScrolled ? 'drop-shadow-stone-500' : 'drop-shadow-white'}`}
                 sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, (max-width: 1024px) 224px, 256px"
               />
             </div>
