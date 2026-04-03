@@ -1,6 +1,15 @@
+import { getAllZoneSlugs } from '@/lib/zones';
+
 const SITE_URL = 'https://bananaexpress.com.ar';
 
 export default function sitemap() {
+  const zonePages = getAllZoneSlugs().map((slug) => ({
+    url: `${SITE_URL}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }));
+
   return [
     {
       url: SITE_URL,
@@ -14,5 +23,6 @@ export default function sitemap() {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    ...zonePages,
   ];
 }

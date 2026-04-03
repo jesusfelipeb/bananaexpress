@@ -58,8 +58,37 @@ export default function ProductsSection() {
 
   const storeUrl = process.env.NEXT_PUBLIC_TIENDANUBE_STORE_URL;
 
+  // JSON-LD Product Schema para SEO
+  const productSchemas = products.map((box) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: box.title,
+    description: box.description,
+    image: box.image?.startsWith('http') ? box.image : `https://bananaexpress.com.ar${box.image}`,
+    brand: { '@type': 'Brand', name: 'Banana Express' },
+    offers: {
+      '@type': 'Offer',
+      price: parseFloat(box.price?.replace(/[^0-9.,]/g, '').replace('.', '').replace(',', '.')) || 0,
+      priceCurrency: 'ARS',
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'Banana Express' },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'ARS' },
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AR', addressRegion: 'Buenos Aires' },
+      },
+    },
+  }));
+
   return (
     <section id="productos" className="py-16 sm:py-20 bg-white">
+      {productSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <div className="container mx-auto px-4 max-w-6xl">
 
         <div className="text-center mb-10 sm:mb-12">
