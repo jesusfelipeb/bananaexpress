@@ -1,41 +1,40 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Instagram, MessageCircle, Heart } from 'lucide-react';
+import { getWhatsAppLink, WHATSAPP_NUMBER, EMAIL, LOCATION, SCHEDULE, INSTAGRAM_URL } from '@/lib/constants';
 
 export default function Footer() {
-  const whatsappNumber = '5491125017092';
-  const whatsappMessage = encodeURIComponent('Hola! Quiero hacer un pedido de Banana Express 🍌');
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const whatsappLink = getWhatsAppLink();
 
   const contactInfo = [
     {
       icon: MapPin,
       title: 'Ubicación',
-      content: 'Paraguay y Coronel Díaz',
-      subtitle: 'Palermo, CABA',
-      link: 'https://maps.google.com/?q=Paraguay+y+Coronel+Diaz+Palermo+CABA',
+      content: LOCATION.address,
+      subtitle: LOCATION.area,
+      link: LOCATION.mapsUrl,
       action: 'Ver en mapa'
     },
     {
       icon: Phone,
       title: 'Teléfono',
-      content: '+54 9 11 2501-7092',
+      content: `+54 9 11 ${WHATSAPP_NUMBER.slice(4, 8)}-${WHATSAPP_NUMBER.slice(8)}`,
       subtitle: 'Llamanos o escribinos',
-      link: `tel:${whatsappNumber}`,
+      link: `tel:+${WHATSAPP_NUMBER}`,
       action: 'Llamar'
     },
     {
       icon: Mail,
       title: 'Email',
-      content: 'contacto@bananaexpress.com.ar',
+      content: EMAIL,
       subtitle: 'Respondemos en 24hs',
-      link: 'mailto:contacto@bananaexpress.com.ar',
+      link: `mailto:${EMAIL}`,
       action: 'Enviar email'
     },
     {
       icon: Clock,
       title: 'Horarios',
-      content: 'Lun a Sáb: 9:00 - 20:00',
-      subtitle: 'Dom: 10:00 - 18:00',
+      content: SCHEDULE.weekdays,
+      subtitle: SCHEDULE.weekends,
       link: null,
       action: null
     }
@@ -70,8 +69,8 @@ export default function Footer() {
             
             {/* Redes sociales */}
             <div className="flex gap-3 pt-2">
-              <a
-                href="https://instagram.com/bananaexpress"
+            <a
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-3 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-full hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-pink-500/50"

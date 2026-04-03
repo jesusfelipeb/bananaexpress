@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Instagram, MessageCircle, ShoppingBag, Truck, Leaf, ArrowDown, Sparkles } from 'lucide-react';
+import { getWhatsAppLink, INSTAGRAM_URL } from '@/lib/constants';
 
 // Componente para los íconos de redes sociales
 const SocialButton = ({ Icon, href, label, platform }) => (
@@ -33,9 +34,8 @@ const Feature = ({ Icon, text }) => (
 );
 
 export default function HeroSection() {
-  const whatsappNumber = '5491125017092'; 
-  const whatsappMessage = encodeURIComponent('Hola! Quiero hacer un pedido de Banana Express 🍌');
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const whatsappLink = getWhatsAppLink();
+  const instagramLink = INSTAGRAM_URL;
 
   return (
     <section 
@@ -76,10 +76,10 @@ export default function HeroSection() {
 
       <div className="container mx-auto px-4 py-8 sm:py-12 md:py-20 text-center z-10 relative">
         
-        {/* Badge superior */}
+        {/* Badge superior con urgencia */}
         <div className="inline-flex items-center gap-2 bg-yellow-400 text-green-900 px-3 sm:px-4 py-2 rounded-full font-bold text-xs sm:text-sm md:text-base mb-4 sm:mb-6 shadow-lg animate-bounce">
           <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span>Entrega HOY • Palermo y alrededores</span>
+          <span>Pedí ahora y recibí HOY mismo</span>
         </div>
 
         {/* Título Principal con animación de entrada */}
@@ -90,11 +90,11 @@ export default function HeroSection() {
         
         {/* Propuesta de valor clara y directa */}
         <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 md:mb-4 max-w-3xl mx-auto leading-relaxed px-4 text-yellow-300">
-          Comprá en 2 minutos por WhatsApp
+          Box armadas desde $11.156 con envío gratis
         </p>
-        
+
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light mb-6 sm:mb-8 md:mb-10 lg:mb-12 max-w-2xl mx-auto leading-relaxed px-4 text-white/90">
-          Sin app, sin registros. Solo elegí tu box, escribinos y lo recibís el mismo día.
+          Sin app, sin registros. Elegí tu Box, comprá online o escribinos por WhatsApp y recibilo hoy.
         </p>
 
         {/* CTA SUPER CLARO - Proceso en 3 pasos */}
@@ -141,7 +141,7 @@ export default function HeroSection() {
               className="group relative inline-flex items-center justify-center bg-green-500 hover:bg-green-600 active:bg-green-700 text-white text-lg sm:text-xl md:text-2xl font-black py-4 sm:py-5 md:py-6 px-6 sm:px-10 md:px-14 rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 animate-pulse-slow border-2 border-white touch-manipulation"
             >
               <MessageCircle className="mr-2 sm:mr-3 h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 flex-shrink-0" />
-              <span className="whitespace-nowrap">¡PEDIR POR WHATSAPP!</span>
+              <span className="whitespace-nowrap">RECIBÍ TU BOX HOY</span>
             </a>
             
             {/* Botón secundario para ver boxes */}
@@ -160,7 +160,7 @@ export default function HeroSection() {
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2 sm:px-4">
           <Feature Icon={Leaf} text="100% Frescos" />
           <Feature Icon={Truck} text="Entrega Gratis" />
-          <Feature Icon={ShoppingBag} text="Sin Mínimo" />
+          <Feature Icon={ShoppingBag} text="+200 familias" />
         </div>
 
         {/* Sección de redes sociales mejorada */}
@@ -169,7 +169,7 @@ export default function HeroSection() {
           <div className="flex justify-center gap-3 sm:gap-4 md:gap-6">
             <SocialButton 
               Icon={Instagram}
-              href="https://instagram.com/bananaexpress" 
+              href={instagramLink} 
               label="@bananaexpress"
               platform="instagram"
             />

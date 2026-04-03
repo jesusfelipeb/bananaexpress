@@ -1,23 +1,60 @@
-import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa'; // Importamos el ícono
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { MessageCircle } from 'lucide-react';
+import { getWhatsAppLink } from '@/lib/constants';
 
 const WhatsAppButton = () => {
-  const whatsappNumber = '5491125017092'; 
-  const whatsappMessage = encodeURIComponent('Hola, me gustaría hacer un pedido de una Box de Banana Express.'); 
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const whatsappLink = getWhatsAppLink('Hola, me gustaría hacer un pedido de una Box de Banana Express.');
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowTooltip(true), 3000);
+    const hideTimer = setTimeout(() => setShowTooltip(false), 8000);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
 
   return (
-    <a 
-      href={whatsappLink} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      // CLASES CLAVE: fixed (posición fija), bottom-6 right-6 (esquina inferior derecha), z-50 (por encima de todo)
-      className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white font-bold p-4 rounded-full shadow-2xl transition duration-300 flex items-center z-50 transform hover:scale-110"
-      aria-label="Contacta a Banana Express por WhatsApp"
-      title="Pedir por WhatsApp"
-    >
-      <FaWhatsapp className="w-8 h-8" />
-    </a>
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+      {/* Tooltip */}
+      <div
+        className={`hidden sm:block bg-white text-gray-800 text-sm font-semibold px-4 py-2.5 rounded-xl shadow-xl border border-gray-100 transition-all duration-500 ${
+          showTooltip ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
+        }`}
+      >
+        Escribinos por WhatsApp
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1 w-2 h-2 bg-white border-r border-b border-gray-100 rotate-[-45deg]"></div>
+      </div>
+
+      {/* Botón */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-500 hover:bg-green-600 text-white font-bold p-4 rounded-full shadow-2xl transition-all duration-300 flex items-center transform hover:scale-110 animate-pulse-slow"
+        aria-label="Contacta a Banana Express por WhatsApp"
+        title="Pedir por WhatsApp"
+      >
+        <MessageCircle className="w-8 h-8" />
+      </a>
+
+      <style jsx>{`
+        @keyframes pulse-slow {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+          }
+          50% {
+            box-shadow: 0 0 0 12px rgba(34, 197, 94, 0);
+          }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 2.5s infinite;
+        }
+      `}</style>
+    </div>
   );
 };
 

@@ -3,16 +3,21 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ProductsSection from '@/components/ProductsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import FaqSection from '@/components/FaqSection';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    
     <main className="relative min-h-screen bg-white">
       <Header />
       <HeroSection />
       <AboutSection />
       <ProductsSection />
+      <TestimonialsSection />
+      <FaqSection />
+      <ContactSection />
       <Footer />
     </main>
   );

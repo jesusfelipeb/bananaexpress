@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, Phone } from 'lucide-react';
+import { getWhatsAppLink } from '@/lib/constants';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,7 +74,7 @@ export default function Header() {
             
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/5491127017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
+              href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
@@ -118,7 +119,7 @@ export default function Header() {
             
             {/* Mobile WhatsApp Button */}
             <a
-              href="https://wa.me/5491127017092?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Banana%20Express"
+              href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
