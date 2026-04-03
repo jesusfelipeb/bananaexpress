@@ -5,34 +5,34 @@ import ProductCard from './ProductCard';
 import { MessageCircle, ShoppingCart } from 'lucide-react';
 import { getWhatsAppLink } from '@/lib/constants';
 
-// Productos locales (fallback si Tiendanube no está configurado)
 const localProducts = [
   {
     title: 'Box Individual Esencial',
-    description: 'La selección ideal para cubrir las necesidades básicas de 1 o 2 personas durante la semana. Frescura y variedad garantizada.',
+    description: 'Ideal para 1-2 personas. Lo justo para la semana con frescura garantizada.',
     price: '$11.156 ARS',
     compareAtPrice: '$14.500 ARS',
-    content: '1 Lechuga, 1/4kg de Zanahoria, 1 Palta, 1/2kg de Papa Cepillada, 1/2 Docena de Huevos, 1/2kg de Bananas, 1/4kg de Mandarinas, 1/4kg de Tomate, 1/4kg de Cebolla, 1 Unidad de Morron rojo.',
+    content: '1 Lechuga, 1/4kg Zanahoria, 1 Palta, 1/2kg Papa, 1/2 Docena Huevos, 1/2kg Bananas, 1/4kg Mandarinas, 1/4kg Tomate, 1/4kg Cebolla, 1 Morron rojo.',
     image: '/1.jpg',
     tiendanubeUrl: '',
   },
   {
     title: 'Box Parejas',
-    description: 'Una caja generosa diseñada para dos personas. Incluye una amplia gama de verduras y frutas de estación.',
+    description: 'Para 2 personas. Variedad amplia de verduras y frutas de estacion.',
     price: '$21.363 ARS',
     compareAtPrice: '$27.800 ARS',
-    content: '1 Lechuga, 1 atado de Rucula, 1/2kg de Zanahoria, 2 Paltas, 1kg de papa cepillada, 1 Docena de Huevos, 1kg de Bananas, 1/2kg de Mandarinas, 1/2kg de Tomate, 1/2kg de Cebolla, 1/2kg de Naranja de jugo, 1 ajo, 1 unidad de Morron Rojo',
+    content: '1 Lechuga, 1 Rucula, 1/2kg Zanahoria, 2 Paltas, 1kg Papa, 1 Docena Huevos, 1kg Bananas, 1/2kg Mandarinas, 1/2kg Tomate, 1/2kg Cebolla, 1/2kg Naranja, 1 Ajo, 1 Morron Rojo.',
     image: '/3.jpg',
     tiendanubeUrl: '',
   },
   {
     title: 'Box Familiar',
-    description: 'Especialmente pensada para familias que buscan una alimentación saludable, variada y sin complicaciones.',
+    description: 'Para 3-5 personas. La semana completa resuelta con todo lo que necesitas.',
     price: '$35.839 ARS',
     compareAtPrice: '$46.500 ARS',
-    content: '2 unidades de Lechuga, 1kg de Tomates, 1kg de Papa cepillada, 3 unidades de Paltas, 1 maple de Huevos grandes, 1kg de Banana, 1kg de Mandarina, 1kg de Naranja de jugo, 1kg de Cebolla, 1/2kg de Manzana roja, 1/2 kg de Morron rojo, 1 Ajo, 1 atado de Rucula.',
+    content: '2 Lechugas, 1kg Tomates, 1kg Papa, 3 Paltas, 1 Maple Huevos, 1kg Banana, 1kg Mandarina, 1kg Naranja, 1kg Cebolla, 1/2kg Manzana roja, 1/2kg Morron rojo, 1 Ajo, 1 Rucula.',
     image: '/5.jpg',
     tiendanubeUrl: '',
+    bestSeller: true,
   },
 ];
 
@@ -50,7 +50,7 @@ export default function ProductsSection() {
           setUsingTiendanube(true);
         }
       } catch {
-        // Silenciosamente usa productos locales
+        // Usa productos locales
       }
     }
     fetchProducts();
@@ -59,25 +59,20 @@ export default function ProductsSection() {
   const storeUrl = process.env.NEXT_PUBLIC_TIENDANUBE_STORE_URL;
 
   return (
-    <section id="productos" className="py-20 bg-gray-50">
+    <section id="productos" className="py-16 sm:py-20 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
 
-        <div className="text-center mb-4">
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold text-sm mb-4">
-            <ShoppingCart className="w-4 h-4" />
-            <span>Precios de verdulería, no de app</span>
-          </div>
+        <div className="text-center mb-10 sm:mb-12">
+          <p className="text-verde-claro font-semibold text-sm mb-2 tracking-wide uppercase">Precios de verdulería, no de app</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-gris-titulo mb-3">
+            Nuestras Box de Frescura
+          </h2>
+          <p className="text-base text-gris-sub max-w-lg mx-auto">
+            Elegí la que mejor se adapta a tu casa y recibila hoy en Palermo
+          </p>
         </div>
 
-        <h2 className="text-4xl font-bold text-center text-green-700 mb-4">
-          Nuestras Box de Frescura
-        </h2>
-        <p className="text-xl text-center text-gray-600 mb-12">
-          Elegí la Box que mejor se adapta a tus hábitos y recibila hoy en tu domicilio
-        </p>
-
-        {/* Grid de Tarjetas de Productos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {products.map((box, index) => (
             <ProductCard
               key={box.id || index}
@@ -88,44 +83,43 @@ export default function ProductsSection() {
               content={box.content}
               image={box.image}
               tiendanubeUrl={box.tiendanubeUrl}
+              bestSeller={box.bestSeller}
             />
           ))}
         </div>
 
-        {/* Ver tienda completa si Tiendanube está configurado */}
         {usingTiendanube && storeUrl && (
-          <div className="text-center mt-10">
+          <div className="text-center mt-8">
             <a
               href={storeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white border-2 border-green-500 text-green-700 hover:bg-green-500 hover:text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-md"
+              className="inline-flex items-center gap-2 border-2 border-verde-medio text-verde-medio hover:bg-verde-medio hover:text-white font-bold py-2.5 px-7 rounded-xl transition-all duration-300 text-sm"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-4 h-4" />
               Ver tienda completa
             </a>
           </div>
         )}
 
-        {/* Llamado a la acción adicional para pedidos personalizados */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-green-100 to-emerald-50 rounded-2xl shadow-inner border border-green-200">
-          <h3 className="text-2xl font-bold text-green-800 mb-3">
-            ¿Necesitás algo específico?
+        {/* Pedido personalizado */}
+        <div className="text-center mt-14 p-7 sm:p-8 bg-verde-pastel/40 rounded-2xl border border-verde-suave/30">
+          <h3 className="text-xl sm:text-2xl font-bold text-gris-titulo mb-2">
+            ¿Necesitas algo especifico?
           </h3>
-          <p className="text-lg text-gray-700 mb-5">
-            Armamos tu pedido personalizado con lo que vos quieras. Solo escribinos.
+          <p className="text-sm sm:text-base text-gris-sub mb-5">
+            Armamos tu pedido personalizado con lo que vos quieras.
           </p>
           <a
             href={getWhatsAppLink('Hola, me gustaría hacer un pedido personalizado de frutas y verduras.')}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-green-900 font-bold py-3.5 px-8 rounded-xl transition duration-300 shadow-lg hover:shadow-yellow-500/30 text-base"
+            className="inline-flex items-center gap-2 bg-amarillo hover:bg-amarillo/90 text-gris-titulo font-bold py-3 px-7 rounded-xl transition-all duration-300 shadow-md text-sm sm:text-base touch-manipulation"
           >
-            <MessageCircle className="w-5 h-5" />
-            Pedido Personalizado por WhatsApp
+            <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+            Pedido Personalizado
           </a>
         </div>
-
       </div>
     </section>
   );

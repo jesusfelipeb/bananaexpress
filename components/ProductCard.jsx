@@ -3,85 +3,90 @@ import Image from 'next/image';
 import { MessageCircle, ShoppingCart, Truck } from 'lucide-react';
 import { getWhatsAppLink } from '@/lib/constants';
 
-const ProductCard = ({ title, description, price, compareAtPrice, content, image, tiendanubeUrl }) => {
-  const whatsappLink = getWhatsAppLink(`Hola, me gustaría pedir la Box: ${title}. ¿Cuál es el siguiente paso?`);
+const ProductCard = ({ title, description, price, compareAtPrice, content, image, tiendanubeUrl, bestSeller }) => {
+  const whatsappLink = getWhatsAppLink(`Hola, me gustaría pedir la Box: ${title}.`);
   const buyUrl = tiendanubeUrl || whatsappLink;
   const isExternal = Boolean(tiendanubeUrl);
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 flex flex-col h-full overflow-hidden hover:shadow-2xl transition-shadow duration-300 relative group">
-      {/* Badge envío gratis */}
-      <div className="absolute top-3 left-3 z-10 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
-        <Truck className="w-3 h-3" />
-        Envío gratis
+    <div className="bg-white rounded-2xl shadow-md border border-verde-pastel/30 flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 relative group">
+      {/* Badges */}
+      <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
+        <div className="bg-verde-hoja text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+          <Truck className="w-3 h-3" />
+          Envio gratis
+        </div>
+        {bestSeller && (
+          <div className="bg-amarillo text-gris-titulo text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+            Mas vendida
+          </div>
+        )}
       </div>
 
-      {/* Imagen de la Box */}
+      {/* Imagen */}
       {image && (
-        <div className="relative h-52 w-full flex-shrink-0 overflow-hidden">
+        <div className="relative h-48 sm:h-52 w-full flex-shrink-0 overflow-hidden">
           <Image
             src={image}
-            alt={`Box de ${title}`}
+            alt={`${title} - Banana Express`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         </div>
       )}
 
-      <div className="p-6 flex flex-col flex-1">
-        <div className="border-l-4 border-green-500 pl-3 mb-3">
-          <h3 className="text-xl font-bold text-green-700">{title}</h3>
-        </div>
-        <p className="text-gray-600 mb-4 text-sm leading-relaxed">{description}</p>
+      <div className="p-5 flex flex-col flex-1">
+        <h3 className="text-lg font-bold text-gris-titulo mb-1.5">{title}</h3>
+        <p className="text-gris-sub mb-3 text-sm leading-relaxed">{description}</p>
 
-        {/* Contenido destacado de la Box */}
+        {/* Contenido de la Box */}
         {content && (
-          <div className="bg-green-50 p-3 rounded-xl mb-4 border border-green-100">
-            <p className="text-xs font-semibold text-green-800 mb-1 uppercase tracking-wide">Incluye:</p>
-            <p className="text-xs text-gray-600 leading-relaxed">{content}</p>
+          <div className="bg-verde-pastel/40 p-3 rounded-xl mb-4">
+            <p className="text-[11px] font-semibold text-verde-hoja mb-1 uppercase tracking-wider">Incluye:</p>
+            <p className="text-xs text-gris-texto leading-relaxed">{content}</p>
           </div>
         )}
 
         <div className="mt-auto">
-          {/* Precio con ancla */}
+          {/* Precio */}
           <div className="mb-4">
             {compareAtPrice && (
-              <p className="text-sm text-gray-400 line-through">{compareAtPrice}</p>
+              <p className="text-sm text-gris-sub line-through">{compareAtPrice}</p>
             )}
-            <p className="text-3xl font-extrabold text-gray-900">{price}</p>
+            <p className="text-2xl sm:text-3xl font-extrabold text-gris-titulo">{price}</p>
           </div>
 
-          {/* CTA Principal — Tiendanube o WhatsApp */}
+          {/* CTA Principal */}
           <a
             href={buyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-green-500/30 text-base"
+            className="w-full inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3 px-5 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-md hover:shadow-lg text-sm sm:text-base touch-manipulation"
           >
             {isExternal ? (
               <>
-                <ShoppingCart className="w-5 h-5" />
+                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
                 Comprar ahora
               </>
             ) : (
               <>
-                <MessageCircle className="w-5 h-5" />
-                Pedir Box por WhatsApp
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                Pedir por WhatsApp
               </>
             )}
           </a>
 
-          {/* Link secundario a WhatsApp si hay Tiendanube */}
+          {/* Link secundario */}
           {isExternal && (
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-1.5 text-green-600 hover:text-green-700 font-semibold text-sm mt-2 py-2 transition-colors"
+              className="w-full inline-flex items-center justify-center gap-1.5 text-verde-medio hover:text-verde-hoja font-semibold text-xs mt-2 py-1.5 transition-colors"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-3.5 h-3.5" />
               Consultar por WhatsApp
             </a>
           )}
